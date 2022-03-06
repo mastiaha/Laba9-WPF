@@ -22,35 +22,9 @@ namespace Laba9_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string style;
-
         public MainWindow()
         {
             InitializeComponent();
-            var uri = new Uri(style + "Light.xaml", UriKind.Relative);
-            ResourceDictionary resourceDictionary = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
-        }
-        private void LightExucuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            style = MenuLightTheme.Tag as string;
-            var uri = new Uri(style + "Light.xaml", UriKind.Relative);
-            RadioBlack.Content = "Черный";
-            if (textBox.Foreground != Brushes.Red);
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-        }
-        private void DarkExucuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            style = MenuDarkTheme.Tag as string;
-            var uri = new Uri(style + "Dark.xaml", UriKind.Relative);
-            RadioBlack.Content = "Белый";
-            if (textBox.Foreground != Brushes.Red);
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -148,6 +122,14 @@ namespace Laba9_WPF
             {
                 textBox.Foreground = Brushes.Red;
             }
+        }
+
+        private void themes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Uri theme = new Uri(themes.SelectedIndex == 0 ? "Light.xaml" : "Dark.xaml", UriKind.Relative);
+            ResourceDictionary themeDict = Application.LoadComponent(theme) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(themeDict);
         }
     }
 }

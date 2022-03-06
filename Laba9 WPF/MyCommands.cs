@@ -13,10 +13,7 @@ namespace Laba9_WPF
         public static RoutedCommand Tolshina { get; set; }
         public static RoutedCommand Kursiv { get; set; }
         public static RoutedCommand Podcherknut { get; set; }
-        public static RoutedCommand TextBlack { get; set; }
         public static RoutedCommand Red { get; set; }
-        public static RoutedCommand Light { get; set; }
-        public static RoutedCommand Dark { get; set; }
         static MyCommands()
         {
             InputGestureCollection inputs = new InputGestureCollection();
@@ -25,10 +22,7 @@ namespace Laba9_WPF
             Tolshina = new RoutedCommand();
             Kursiv = new RoutedCommand();
             Podcherknut = new RoutedCommand();
-            TextBlack = new RoutedCommand();
             Red = new RoutedCommand();
-            Light = new RoutedCommand();
-            Dark = new RoutedCommand();
         }
     }
 }
